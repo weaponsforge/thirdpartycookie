@@ -8,15 +8,16 @@
 		// Can be replaced with the production demo URL (minus forward slash from last)
 		// https://thirdpartycookie.firebaseapp.com
 		var originURL = window.location.origin
+		var checkerURL = originURL + '/check.html'
 
     var mThirdPartyCookies = function(evt) {
       if (!document.querySelector('#checkframe')) {
         var frame = document.createElement('iframe')
 				frame.setAttribute('id', 'checkframe')
 				frame.style.display = 'none'
-        frame.src = originURL + '/check.html'
+        frame.src = checkerURL
 				document.body.appendChild(frame)
-				document.querySelector('#checker').innerHTML = origin
+				document.querySelector('#checker').innerHTML = checkerURL
         window.addEventListener("message", receiveMessage, false)
       }
 		};
