@@ -44,7 +44,7 @@
 1. Create an `<iframe>`.
 2. Point its `src` to `https://<your-secure-domain>/thirdpartycookie/check.html`. i.e.,   
 `<iframe src="https://thirdpartycookie.firebaseapp.com/check.html">`
-3. Listen for a window "message" event that will be issued `window.postMessage()`  
+3. Listen for a window "message" event that will be issued using `window.postMessage()` from the iframe's child.  
 
 		var receiveMessage = function(evt) {
 			if (evt && evt.origin === window.location.origin) {
