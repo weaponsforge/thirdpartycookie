@@ -38,7 +38,7 @@
 
 ## Usage
 
-> Production version: [https://thirdpartycookie.firebaseapp.com/](https://thirdpartycookie.firebaseapp.com/).
+> **Live demo**: [https://thirdpartycookie.firebaseapp.com/](https://thirdpartycookie.firebaseapp.com/).
 
 
 1. Create an `<iframe>`.
@@ -57,6 +57,13 @@
 		}
 
 		window.addEventListener("message", receiveMessage, false)
+
+
+## References
+
+[[1]](https://stackoverflow.com/questions/3550790/check-if-third-party-cookies-are-enabled) - S.O. check if third party cookies are enabled  
+[[2]](https://blog.zok.pw/web/2015/10/21/3rd-party-cookies-in-practice/) - 3rd party cookies in practice  
+[[3]](https://javascript.info/cookie) - document.cookie
 
 
 @weaponsforge  
