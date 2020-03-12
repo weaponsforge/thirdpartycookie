@@ -2,12 +2,11 @@ name: Deploy to Firebase Hosting
 
 on:
   push:
-    tags: 
-      - '/^\d+\.\d+\.\d+(-.*)?$/'
+    branches:
+      - master
 
 jobs:
   deploy:
-
     runs-on: ubuntu-latest
 
     steps:
