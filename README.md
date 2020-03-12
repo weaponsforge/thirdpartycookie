@@ -14,8 +14,9 @@
 
 ### Content
 
-- [**Installation**]()
-- [**Usage**]()
+- [**Installation**](#installation)
+- [**Usage**](#usage)
+- [**References**](#references)
 
 
 
@@ -33,7 +34,8 @@
 4. Load the local website client for more usage information.  
 `http://localhost:3001`
 
-5. Upload `check.html` and `complete.html` in a secure web server that runs in https.
+5. (Optional) Upload `check.html` and `complete.html` in a secure web server that runs in https and call
+"check.html" from there i.e., `https://[YOUR_SECURE_SERVER]/check.html`
 
 
 ## Usage

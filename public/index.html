@@ -5,22 +5,25 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Checking</title>
 	<script type="text/javascript">
+		// Can be replaced with the production demo URL (minus forward slash from last)
+		// https://thirdpartycookie.firebaseapp.com
+		var originURL = window.location.origin
+		var checkerURL = originURL + '/check.html'
+
     var mThirdPartyCookies = function(evt) {
-      var origin = window.location.origin + '/check.html'
-  
       if (!document.querySelector('#checkframe')) {
         var frame = document.createElement('iframe')
 				frame.setAttribute('id', 'checkframe')
 				frame.style.display = 'none'
-        frame.src = origin
+        frame.src = checkerURL
 				document.body.appendChild(frame)
-				document.querySelector('#checker').innerHTML = origin
+				document.querySelector('#checker').innerHTML = checkerURL
         window.addEventListener("message", receiveMessage, false)
       }
 		};
 		
 		var receiveMessage = function(evt) {
-			if (evt && evt.origin === window.location.origin) {
+			if (evt && evt.origin === originURL) {
 				console.log(evt)
 				if (evt.data === 'MM:3PCunsupported') {
 					console.log('--3RD PARTY COOKIES ARE N-O-T SUPPORTED!!')
@@ -32,6 +35,12 @@
 			}
 		}
 	</script>
+	<style type="text/css">
+		.code {
+			font-family: courier;
+			font-size: 12px;
+		}
+	</style>
 </head>
 <body onload="mThirdPartyCookies()">
 
@@ -41,10 +50,10 @@
 		<li>Create an iframe</li>
 		<li>Point its src to <span id="checker"></span></li>
 		<li>Listen for window "message" event (see receiveMessage() from this page's view-source)</li>
-		<li>Host check.html and complete.html in a "secure" ssl web server.</li>
+		<li>(Optional) Host check.html and complete.html in your own "secure" ssl web server and call <br> "check.html" from there i.e., <span class="code">https://[YOUR_SECURE_SERVER]/check.html<span></li>
 	</ul>
 
-	<div style="width:500px; margin:30px;font-family:courier;font-size:12px;">
+	<div class="code" style="width:500px;margin:30px;">
 		var receiveMessage = function (evt) { <br>
 			&nbsp; if (evt.data === 'MM:3PCunsupported') {<br>
 			&nbsp; &nbsp; document.getElementById('result').innerHTML = 'not supported';<br>
@@ -54,7 +63,9 @@
 		};
 	</div>
 
+	<small><a href="https://github.com/weaponsforge/thirdpartycookie">@github</a></small>
+
 	<h3>Result</h3>	
-	third party cookies are <span id="result" />	
+	third party cookies are <span id="result" />
 </body>
 </html>
