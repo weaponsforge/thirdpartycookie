@@ -5,14 +5,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Checking</title>
 	<script type="text/javascript">
+		// Can be replaced with the production demo URL (minus forward slash from last)
+		// https://thirdpartycookie.firebaseapp.com
+		var originURL = window.location.origin
+
     var mThirdPartyCookies = function(evt) {
-      var origin = window.location.origin + '/check.html'
-  
       if (!document.querySelector('#checkframe')) {
         var frame = document.createElement('iframe')
 				frame.setAttribute('id', 'checkframe')
 				frame.style.display = 'none'
-        frame.src = origin
+        frame.src = originURL + '/check.html'
 				document.body.appendChild(frame)
 				document.querySelector('#checker').innerHTML = origin
         window.addEventListener("message", receiveMessage, false)
@@ -20,7 +22,7 @@
 		};
 		
 		var receiveMessage = function(evt) {
-			if (evt && evt.origin === window.location.origin) {
+			if (evt && evt.origin === originURL) {
 				console.log(evt)
 				if (evt.data === 'MM:3PCunsupported') {
 					console.log('--3RD PARTY COOKIES ARE N-O-T SUPPORTED!!')

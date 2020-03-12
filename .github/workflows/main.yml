@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - variable-scope-updates
 
 jobs:
   deploy:
