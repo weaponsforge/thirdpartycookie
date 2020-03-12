@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Checking</title>
+	<script type="text/javascript">
+    var mThirdPartyCookies = function(evt) {
+      var origin = window.location.origin + '/check.html'
+  
+      if (!document.querySelector('#checkframe')) {
+        var frame = document.createElement('iframe')
+				frame.setAttribute('id', 'checkframe')
+				frame.style.display = 'none'
+        frame.src = origin
+				document.body.appendChild(frame)
+				document.querySelector('#checker').innerHTML = origin
+        window.addEventListener("message", receiveMessage, false)
+      }
+		};
+		
+		var receiveMessage = function(evt) {
+			if (evt && evt.origin === window.location.origin) {
+				console.log(evt)
+				if (evt.data === 'MM:3PCunsupported') {
+					console.log('--3RD PARTY COOKIES ARE N-O-T SUPPORTED!!')
+					document.getElementById('result').innerHTML = 'not supported';
+				} else if (evt.data === 'MM:3PCsupported') {
+					console.log('--3RD PARTY COOKIES ARE SUPPORTED')
+					document.getElementById('result').innerHTML = 'supported';
+				}
+			}
+		}
+	</script>
+</head>
+<body onload="mThirdPartyCookies()">
+
+
+	<h3>Usage</h3>
+	<ul>
+		<li>Create an iframe</li>
+		<li>Point its src to <span id="checker"></span></li>
+		<li>Listen for window "message" event (see receiveMessage() from this page's view-source)</li>
+		<li>Host check.html and complete.html in a "secure" ssl web server.</li>
+	</ul>
+
+	<div style="width:500px; margin:30px;font-family:courier;font-size:12px;">
+		var receiveMessage = function (evt) { <br>
+			&nbsp; if (evt.data === 'MM:3PCunsupported') {<br>
+			&nbsp; &nbsp; document.getElementById('result').innerHTML = 'not supported';<br>
+			&nbsp; } else if (evt.data === 'MM:3PCsupported') {<br>
+			&nbsp; &nbsp; document.getElementById('result').innerHTML = 'supported';<br>
+			&nbsp; }<br>
+		};
+	</div>
+
+	<h3>Result</h3>	
+	third party cookies are <span id="result" />	
+</body>
+</html>
