@@ -2,8 +2,8 @@ name: Deploy to Firebase Hosting
 
 on:
   push:
-    branches: 
-      - /^\d+\.\d+\.\d+(-.*)?$/
+    tags: 
+      - '/^\d+\.\d+\.\d+(-.*)?$/'
 
 jobs:
   deploy:
