@@ -35,6 +35,12 @@
 			}
 		}
 	</script>
+	<style type="text/css">
+		.code {
+			font-family: courier;
+			font-size: 12px;
+		}
+	</style>
 </head>
 <body onload="mThirdPartyCookies()">
 
@@ -44,10 +50,10 @@
 		<li>Create an iframe</li>
 		<li>Point its src to <span id="checker"></span></li>
 		<li>Listen for window "message" event (see receiveMessage() from this page's view-source)</li>
-		<li>Host check.html and complete.html in a "secure" ssl web server.</li>
+		<li>(Optional) Host check.html and complete.html in your own "secure" ssl web server and call <br> "check.html" from there i.e., <span class="code">https://[YOUR_SECURE_SERVER]/check.html<span></li>
 	</ul>
 
-	<div style="width:500px; margin:30px;font-family:courier;font-size:12px;">
+	<div class="code" style="width:500px;margin:30px;">
 		var receiveMessage = function (evt) { <br>
 			&nbsp; if (evt.data === 'MM:3PCunsupported') {<br>
 			&nbsp; &nbsp; document.getElementById('result').innerHTML = 'not supported';<br>
@@ -57,7 +63,9 @@
 		};
 	</div>
 
+	<small><a href="https://github.com/weaponsforge/thirdpartycookie">@github</a></small>
+
 	<h3>Result</h3>	
-	third party cookies are <span id="result" />	
+	third party cookies are <span id="result" />
 </body>
 </html>
