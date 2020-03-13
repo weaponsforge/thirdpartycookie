@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Results</title>
+  <script type="text/javascript">
+    var checkThirdParty = function() {
+      var xhttp = new XMLHttpRequest()
+      xhttp.onreadystatechange = function() {
+        console.log(this)
+        if (this.readyState === 4) {
+          var isEnabled = (this.status === 200) ? 'supported' : 'not supported'
+          document.querySelector('#result').innerHTML = isEnabled
+        }
+      }
+
+      xhttp.open("GET", "/check", true)
+      xhttp.send()      
+    }
+  </script>
+</head>
+<body onload="checkThirdParty()">
+  <h2>Results</h2>
+  thirdparty cookies are <span id="result"></span>
+</body>
+</html>
