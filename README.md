@@ -16,6 +16,7 @@
 
 - [**Installation**](#installation)
 - [**Usage**](#usage)
+- [**Live Demo**](#demo)
 - [**References**](#references)
 
 
@@ -40,25 +41,30 @@
 
 ## Usage
 
-> **Live demo**: [https://thirdpartycookie.firebaseapp.com/](https://thirdpartycookie.firebaseapp.com/).
-
-
 1. Create an `<iframe>`.
 2. Point its `src` to `https://<your-secure-domain>/thirdpartycookie/check.html`. i.e.,   
 `<iframe src="https://thirdpartycookie.firebaseapp.com/check.html">`
 3. Listen for a window "message" event that will be issued using `window.postMessage()` from the iframe's child.  
 
 		var receiveMessage = function(evt) {
-			if (evt && evt.origin === window.location.origin) {
-				if (evt.data === 'MM:3PCunsupported') {
-					console.log('--3RD PARTY COOKIES ARE N-O-T SUPPORTED!!')
-				} else if (evt.data === 'MM:3PCsupported') {
-					console.log('--3RD PARTY COOKIES ARE SUPPORTED')
-				}
-			}
+		  if (evt && evt.origin === window.location.origin) {
+		    if (evt.data === 'MM:3PCunsupported') {
+		      console.log('--3RD PARTY COOKIES ARE N-O-T SUPPORTED!!')
+		    } else if (evt.data === 'MM:3PCsupported') {
+		      console.log('--3RD PARTY COOKIES ARE SUPPORTED')
+		    }
+		  }
 		}
 
 		window.addEventListener("message", receiveMessage, false)
+
+
+## Live Demo
+
+
+> **thirdpartycookie**:   
+> [https://thirdpartycookie.firebaseapp.com/](https://thirdpartycookie.firebaseapp.com/).
+
 
 
 ## References

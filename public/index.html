@@ -53,14 +53,15 @@
 		<li>(Optional) Host check.html and complete.html in your own "secure" ssl web server and call <br> "check.html" from there i.e., <span class="code">https://[YOUR_SECURE_SERVER]/check.html<span></li>
 	</ul>
 
-	<div class="code" style="width:500px;margin:30px;">
+	<div class="code" style="width:500px;margin:30px;border:1px solid black;padding:10px;">
 		var receiveMessage = function (evt) { <br>
 			&nbsp; if (evt.data === 'MM:3PCunsupported') {<br>
 			&nbsp; &nbsp; document.getElementById('result').innerHTML = 'not supported';<br>
 			&nbsp; } else if (evt.data === 'MM:3PCsupported') {<br>
 			&nbsp; &nbsp; document.getElementById('result').innerHTML = 'supported';<br>
 			&nbsp; }<br>
-		};
+		};<br><br>
+		window.addEventListener("message", receiveMessage, false)
 	</div>
 
 	<small><a href="https://github.com/weaponsforge/thirdpartycookie">@github</a></small>
