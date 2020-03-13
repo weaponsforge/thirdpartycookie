@@ -2,12 +2,14 @@ const express = require('express')
 const PORT = process.env.PORT || 3001
 const cookieParser = require('cookie-parser')
 const path = require('path')
+const cors = require('cors')
 const app = express()
 const cookieName = 'thirdparty'
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
+app.use(cors())
 app.use(express.static(path.join(__dirname, '..', 'public')))
 
 app.get('/check', (req, res) => {
